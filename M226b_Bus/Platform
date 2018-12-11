@@ -1,0 +1,70 @@
+package M226b_Bus;
+
+public class Platform {
+	
+	private Bus bus;
+	private Travel travel;
+	private int number;
+	private double size;
+	private boolean occupied;
+
+	public Platform(String destination, String departureTime, String arrivalTime, String busService, int number, double size, boolean occupied, Bus bus){
+		travel = new Travel(destination, departureTime, arrivalTime, busService);
+		this.bus = bus;
+		this.number = number;
+		this.size = size;
+		this.occupied = occupied;
+	}
+
+	public void print() {
+	  System.out.println("--------- TRIP INFORMATION ---------");
+	  System.out.println("---- PLATFORM " + number + " ----");
+		bus.print();
+		travel.print();
+	}
+	
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public double getSize() {
+		return size;
+	}
+
+	public void setSize(float size) {
+		this.size = size;
+	}
+
+	public boolean isOccupied() {
+		return occupied;
+	}
+
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
+
+  public Bus getBus() {
+    return bus;
+  }
+
+  public void setBus(Bus bus) {
+    this.bus = bus;
+  }
+
+  public Travel getTravel() {
+    return travel;
+  }
+
+  public void setTravel(Travel travel) {
+    this.travel = travel;
+  }
+
+  public void setSize(double size) {
+    this.size = size;
+  }
+
+}
