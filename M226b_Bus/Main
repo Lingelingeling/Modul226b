@@ -1,0 +1,53 @@
+package M226b_Bus;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Bus bus1 = new Bus("model1", "lp1", "bustype1", 30, "comfort1");
+		Bus bus2 = new Bus("model2", "lp2", "bustype2", 20, "comfort2");
+		Bus bus3 = new Bus("model3", "lp3", "bustype3", 35, "comfort3");
+    Bus bus4 = new Bus("model4", "lp4", "bustype4", 35, "comfort4");
+    Bus bus5 = new Bus("model5", "lp5", "bustype5", 35, "comfort5");
+    
+		Platform platform1 = new Platform("dest1", "10:10", "11:50", "service1", 1, 1.0, true, bus1);
+		Platform platform2 = new Platform("dest2", "15:20", "20:00", "service2", 2, 2.0, true, bus2);
+		Platform platform3 = new Platform("dest3", "07:50", "10:00", "service3", 3, 3.0, true, bus3);
+		Platform platform4 = new Platform("dest4", "12:15", "12:45", "service4", 4, 4.0, true, bus1);
+    Platform platform5 = new Platform("dest5", "12:15", "12:45", "service5", 4, 4.0, false, null);
+    Platform platform6 = new Platform("dest6", "12:15", "12:45", "service6", 4, 4.0, false, null);
+    
+		BusTerminal busterminal = new BusTerminal("terminalname");
+		busterminal.addBus(bus1);
+		busterminal.addBus(bus2);
+		busterminal.addBus(bus3);
+		busterminal.addPlatform(platform1);
+		busterminal.addPlatform(platform2);
+		busterminal.addPlatform(platform3);
+		busterminal.addPlatform(platform4);
+    busterminal.addPlatform(platform5);
+    busterminal.addPlatform(platform6);
+	
+
+		
+		System.out.println("Check all Trips [1], generate new trip [2]");
+		Scanner scanner = new Scanner(System.in);
+		int option = scanner.nextInt();
+		
+		if(option == 1) {
+			System.out.println("Checking all trips");
+			System.out.println("---------------------------");
+		   busterminal.printBus();
+		   busterminal.printPlatform();
+		} else if (option == 2) {
+			System.out.println("Generating new trip");
+			System.out.println("---------------------------");
+			
+			
+		}
+		
+	}
+	
+}
