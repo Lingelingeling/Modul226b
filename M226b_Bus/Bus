@@ -1,0 +1,47 @@
+package M226b_Bus;
+
+public class Bus extends Vehicle {
+
+	private String busType;
+	private int passengerCapacity;
+	private String comfort;
+
+	public Bus(String model, String licensePlate, String busType, int passengerCapacity, String comfort) {
+		super(model, licensePlate);
+		this.busType = busType;
+		this.passengerCapacity = passengerCapacity;
+		this.comfort = comfort;
+	}
+	
+	public void print() {
+		System.out.println("Bustype: " + busType);
+		System.out.println("Capacity: " + passengerCapacity);
+		System.out.println("Comfort: " + comfort);
+		super.print();
+	}
+	
+	public String getBusType() {
+		return busType;
+	}
+
+	public void setBusType(String busType) {
+		this.busType = busType;
+	}
+
+	public int getPassengerCapacity() {
+		return passengerCapacity;
+	}
+
+	public void setPassengerCapacity(int passengerCapacity) {
+		this.passengerCapacity = passengerCapacity;
+	}
+
+	public String getComfort() {
+		return comfort;
+	}
+
+	public void setComfort(String comfort) {
+		this.comfort = comfort;
+	}
+
+}
