@@ -1,0 +1,65 @@
+package M226b_Bus;
+
+import java.util.ArrayList;
+
+public class BusTerminal {
+
+	private ArrayList<Bus> buslist;
+	private ArrayList<Platform> platformlist;
+	private String terminalName;
+	
+	public BusTerminal(String terminalName) {
+		this.terminalName = terminalName;
+		buslist = new ArrayList<Bus>();
+		platformlist = new ArrayList<Platform>();
+	}
+	
+	public void addBus(Bus bus) {
+		buslist.add(bus);
+	}
+	
+	public void addPlatform(Platform platform) {
+		platformlist.add(platform);
+	}
+	
+	public void printBus() {
+		for(Bus bus : buslist) {
+			bus.print();
+		}
+	}
+	
+	private void PlatformNotOccupied() {
+	  for(Platform platform : platformlist) {
+	    if(!platform.isOccupied()) {
+	      platform.print();
+        }
+	  }
+	}
+	 private void BusNotOccupied() {
+	    for(Platform platform : platformlist) {
+	      if(platform.getBus() != null) {
+	        platform.print();
+	      }
+	    }
+	  }
+	
+	public void printPlatform() {
+		for(Platform platform : platformlist) {
+			platform.print();
+		}
+	}
+	
+	public ArrayList<Platform> getPlatform() {
+		return platformlist;
+	}
+	public void setPlatform(ArrayList<Platform> platform) {
+		this.platformlist = platform;
+	}
+	public String getTerminalName() {
+		return terminalName;
+	}
+	public void setTerminalName(String terminalName) {
+		this.terminalName = terminalName;
+	}
+	
+}
