@@ -11,6 +11,9 @@ public class PowerForward extends Player {
     }
 
     @Override
+    /**
+     * Function to show the information of the PowerForward-Players (Used in Main)
+     */
     public String toString() {
         return "========== PowerForward ==========\n" +
                 this.getName() + ", " + this.getAge() + " Jahre\n" +
@@ -22,3 +25,4 @@ public class PowerForward extends Player {
                 ;
     }
 }
+
