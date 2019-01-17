@@ -23,16 +23,16 @@ public class MainTrainer extends Trainer implements Managable{
     public void setManageExperience(int manageExperience) {
         this.manageExperience = manageExperience;
     }
-
-    /*
-    public Player addPlayer(Player player, Team team){
-
-    }
-    */
     public void removePlayer(Player player, Team team){
         List<Player> playerList = team.getPlayers();
         playerList.remove(player);
     }
+    
+	@Override
+	public void addPlayer(Player player, Team team) {
+		List<Player> playerList = team.getPlayers();
+        playerList.add(player);
+	}
 
     @Override
     public void trainDefense() {
@@ -58,4 +58,7 @@ public class MainTrainer extends Trainer implements Managable{
     public void trainDribbling() {
 
     }
+
+
 }
+
