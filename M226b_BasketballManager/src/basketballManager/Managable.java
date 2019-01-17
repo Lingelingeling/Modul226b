@@ -6,6 +6,6 @@ package basketballManager;
  */
 
 public interface Managable {
-    //public Player addPlayer(Player player, Team team);
+    public void addPlayer(Player player, Team team);
     public void removePlayer(Player player, Team team);
 }
