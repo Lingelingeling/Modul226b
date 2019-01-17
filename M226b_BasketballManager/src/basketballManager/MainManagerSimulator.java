@@ -13,19 +13,24 @@ public class MainManagerSimulator {
 
 	public static void main(String[] args) {
 
+		// Playerlist for the basketball-teams
 		List<Player> playersPistons = generatePlayerPistons();
 		List<Player> playersRaptors = generatePlayerRaptors();
+		// Trainers for each team
 		CoTrainer johannes = generateCoTrainer("Johannes", 36, 59);
 		CoTrainer antonio = generateCoTrainer("Antonio", 29, 50);
 		MainTrainer rui = generateMainTrainer("Rui", 39, 77, 50);
 		MainTrainer patrick = generateMainTrainer("Patrick", 45, 85, 70);
+		// Teams
 		Team pistons = generateTeam("Detroit Pistons", "Premier League");
 		Team raptors = generateTeam("Toronto Raptors", "Premier League");
 
+		// Players & Trainers for Team: Pistons are set
 		pistons.setPlayers(playersPistons);
 		pistons.setCoTrainer(johannes);
 		pistons.setMainTrainer(rui);
 
+		// Players & Trainers for Team: Raptors are set
 		raptors.setPlayers(playersRaptors);
 		raptors.setCoTrainer(antonio);
 		raptors.setMainTrainer(patrick);
@@ -42,30 +47,40 @@ public class MainManagerSimulator {
 			System.out.println(
 					"Choose your team!\n[1] " + pistons.getName() + "\n[2] " + raptors.getName() + "\n[x] End Program");
 
+			// Selection for further actions
 			teamSelection = scanTeamSelection.nextLine();
 			switch (teamSelection) {
 			case "1":
+				// Calls the function of In-Team-Selections (team: pistons)
 				selectionInTeam(pistons);
 				break;
 			case "2":
+				// Calls the function of In-Team-Selections (team: raptors)
 				selectionInTeam(raptors);
 				break;
 			case "x":
+				// Terminates the program
 				System.out.println("Bye Bye");
-				validResponse = false;
 				break;
 			default:
+				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
-				validResponse = true;
 				break;
 			}
 		} while (validResponse);
 	}
 
+	/**
+	 * Method to generate a Team (E.g. Pistons)
+	 */
 	private static Team generateTeam(String name, String league) {
 		return new Team(name, league);
 	}
 
+	/**
+	 * Method to generate a team's players (Pistons) Saved in List, later used in
+	 * Main
+	 */
 	public static List<Player> generatePlayerPistons() {
 		List<Player> playerList = new ArrayList<>();
 
@@ -81,6 +96,10 @@ public class MainManagerSimulator {
 		return playerList;
 	}
 
+	/**
+	 * Method to generate a team's players (Raptors) Saved in List, later used in
+	 * Main
+	 */
 	public static List<Player> generatePlayerRaptors() {
 		List<Player> playerList = new ArrayList<>();
 
@@ -95,19 +114,30 @@ public class MainManagerSimulator {
 		return playerList;
 	}
 
+	/**
+	 * Method to generate a team's Co-Trainer New CoTrainer Instance created Later
+	 * used in Main
+	 */
 	private static CoTrainer generateCoTrainer(String name, int age, int trainExperience) {
 		return new CoTrainer(name, age, trainExperience);
 	}
 
+	/**
+	 * Method to generate a team's Main-Trainer New MainTrainer Instance created
+	 * Later used in Main
+	 */
 	private static MainTrainer generateMainTrainer(String name, int age, int trainExperience, int manageExperience) {
 		return new MainTrainer(name, age, trainExperience, manageExperience);
 	}
 
+	/**
+	 * Method after User selected Team. New Selections for further actions
+	 */
 	private static void selectionInTeam(Team team) {
 		boolean tryAgain = true;
 		Scanner scanTeamOptions = new Scanner(System.in);
 		while (tryAgain) {
-			System.out.println("============= " + team + " ===============");
+			System.out.println("============= " + team.getName() + " ===============");
 			System.out.println("[1] View Team");
 			System.out.println("[2] Co-Trainer");
 			System.out.println("[3] Main Trainer");
@@ -116,18 +146,23 @@ public class MainManagerSimulator {
 
 			switch (response) {
 			case "1":
+				// Calls function to enter the more detailed Team-Selection
 				enteringTeam(team);
 				break;
 			case "2":
+				// Calls function to enter the Co-Trainer selection
 				enteringCoTrainer(team);
 				break;
 			case "3":
+				// Calls function to enter the Main-Trainer selection
 				enteringMainTrainer(team);
 				break;
 			case "b":
+				// Return to previous Selection
 				tryAgain = false;
 				break;
 			default:
+				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
 				tryAgain = true;
 				break;
@@ -135,6 +170,9 @@ public class MainManagerSimulator {
 		}
 	}
 
+	/**
+	 * Method after User selected View Team. New Selections for further actions
+	 */
 	private static void enteringTeam(Team team) {
 		boolean tryAgain = true;
 		Scanner scanViewTeam = new Scanner(System.in);
@@ -150,11 +188,13 @@ public class MainManagerSimulator {
 
 			switch (response) {
 			case "1":
+				// Prints the information of every single player in the selected team
 				for (Player player : team.getPlayers()) {
 					System.out.println(player.toString());
 				}
 				break;
 			case "2":
+				// Only prints out the information of all ShootingGuards in the selected team
 				for (Player player : team.getPlayers()) {
 					if (player instanceof ShootingGuard) {
 						System.out.println(player.toString());
@@ -162,6 +202,7 @@ public class MainManagerSimulator {
 				}
 				break;
 			case "3":
+				// Only prints out the information of all defenders in the selected team
 				for (Player player : team.getPlayers()) {
 					if (player instanceof Defender) {
 						System.out.println(player.toString());
@@ -169,6 +210,7 @@ public class MainManagerSimulator {
 				}
 				break;
 			case "4":
+				// Only prints out the information of all CenterPlayers in the selected team
 				for (Player player : team.getPlayers()) {
 					if (player instanceof CenterPlayer) {
 						System.out.println(player.toString());
@@ -176,6 +218,8 @@ public class MainManagerSimulator {
 				}
 				break;
 			case "5":
+				// Only prints out the information of all PowerForward-Players in the selected
+				// team
 				for (Player player : team.getPlayers()) {
 					if (player instanceof PowerForward) {
 						System.out.println(player.toString());
@@ -183,9 +227,11 @@ public class MainManagerSimulator {
 				}
 				break;
 			case "b":
+				// Return to previous Selection
 				tryAgain = false;
 				break;
 			default:
+				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
 				tryAgain = true;
 				break;
@@ -193,6 +239,9 @@ public class MainManagerSimulator {
 		}
 	}
 
+	/**
+	 * Method after User selected Co-trainer. New Selections for further actions
+	 */
 	private static void enteringCoTrainer(Team team) {
 		boolean tryAgain = true;
 		Scanner scanViewCoTrainer = new Scanner(System.in);
@@ -206,15 +255,19 @@ public class MainManagerSimulator {
 
 			switch (response) {
 			case "1":
+				// Prints out all the information about the Co-trainer(s)
 				System.out.println(team.getCoTrainer().toString());
 				break;
 			case "2":
+				// Calls function to choose a Player by its number (for training)
 				getPlayerByNumber(team, team.getCoTrainer());
 				break;
 			case "b":
+				// Return to previous Selection
 				tryAgain = false;
 				break;
 			default:
+				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
 				tryAgain = true;
 				break;
@@ -222,6 +275,9 @@ public class MainManagerSimulator {
 		}
 	}
 
+	/**
+	 * Method after User selected Main-trainer. New Selections for further actions
+	 */
 	private static void enteringMainTrainer(Team team) {
 		boolean tryAgain = true;
 		Scanner scanViewMainTrainer = new Scanner(System.in);
@@ -236,15 +292,19 @@ public class MainManagerSimulator {
 
 			switch (response) {
 			case "1":
+				// Prints out all the information about the Main-trainer(s)
 				System.out.println(team.getMainTrainer().toString());
 				break;
 			case "2":
+				// Calls function to choose a Player by its number (for training)
 				getPlayerByNumber(team, team.getMainTrainer());
 				break;
 			case "b":
+				// Return to previous Selection
 				tryAgain = false;
 				break;
 			default:
+				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
 				tryAgain = true;
 				break;
@@ -252,6 +312,10 @@ public class MainManagerSimulator {
 		}
 	}
 
+	/**
+	 * Method to select Players by their playernumber. Used for choosing a player to
+	 * train
+	 */
 	private static Player getPlayerByNumber(Team team, Trainer trainer) {
 		Scanner scanPlayerNumber = new Scanner(System.in);
 		// showAllPlayers(team.getPlayers());
@@ -268,6 +332,10 @@ public class MainManagerSimulator {
 
 	}
 
+	/**
+	 * Method to train the selected Player (getPlayerByNumber). Features saved to
+	 * the individual player.
+	 */
 	private static void trainSelectedPlayer(Player player, Trainer trainer) {
 		boolean tryAgain = true;
 		String response = null;
@@ -285,33 +353,41 @@ public class MainManagerSimulator {
 			tryAgain = false;
 			switch (response) {
 			case "1":
+				// Calls the function to increase the defense of the chosen player
 				trainer.trainDefense(player);
 				System.out.println("Player trained his defense");
 				break;
 			case "2":
+				// Calls the function to increase the shooting of the chosen player
 				trainer.trainShooting(player);
 				System.out.println("Player trained his Shooting");
 				break;
 			case "3":
+				// Calls the function to increase the pace of the chosen player
 				trainer.trainPace(player);
 				System.out.println("Player trained his Pace");
 				break;
 			case "4":
+				// Calls the function to increase the passing of the chosen player
 				trainer.trainPassing(player);
 				System.out.println("Player trained his passing");
 				break;
 			case "5":
+				// Calls the function to increase the dribbling of the chosen player
 				trainer.trainDribbling(player);
 				System.out.println("Player trained his dribbling");
 				break;
 			case "b":
+				// Return to previous Selection
+				tryAgain = false;
 				break;
 			default:
+				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
 				tryAgain = true;
+				break;
 			}
 		}
 	}
 
 }
-
