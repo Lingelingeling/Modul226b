@@ -16,12 +16,13 @@ public class Defender extends Player {
      */
     public String toString() {
         return "========== Defender =========\n" +
-                this.getName() + ", " + this.getAge() + " Jahre\n" +
-                "Player Number: " + this.getNumber() + "\n" +
-                "Shooting: " + this.getShooting() + "\tPassing: " + this.getPassing() + "\n" +
-                "Pace: " + this.getPace() + "\t\tDefending: " + this.getDefending() + "\n" +
+                this.getName() + ", " + this.getAge() + " Year(s)\n" +
+                "Player Number: " + this.getNumber() + "\n\n" +
+                "Shooting: " + this.getShooting() + "\tPassing: " + this.getPassing() + "\t" +
                 "Dribbling: " + this.getDribbling() +
-                "\n============================="
+                "\nPace: " + this.getPace() + "\tDefending: " + this.getDefending() + "\n" +
+                
+                "\n==================================================="
                 ;
     }
 }
