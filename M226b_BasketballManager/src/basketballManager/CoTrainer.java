@@ -37,6 +37,9 @@ public class CoTrainer extends Trainer {
     }
 
     @Override
+    /**
+     * Function to show the information of the Co-Trainers (Used in Main)
+     */
     public String toString() {
         return "=============================\n" +
                 "Name: " + this.getName() + "\n" +
@@ -45,3 +48,4 @@ public class CoTrainer extends Trainer {
                 "=============================\n";
     }
 }
+
