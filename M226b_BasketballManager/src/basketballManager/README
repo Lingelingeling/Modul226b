@@ -7,6 +7,19 @@ E.g. a basketball-player needs to be fast so you can train their pace, whereas t
 
 -------------------------
 
+Goals:
+Our program should be able to:
+- Show the Players of the selected team
+- Show choosable training options for the players
+- show additional Details of Trainers and Players
+
+Additional Features (were adapted during the process):
+- return to previous function
+- end the program
+- the Player's features get updated after training
+
+-------------------------
+
 Procedure:
 First, we designed our project. We wrote use Cases and a class diagram, the sequence diagram was later on adapted by Belinda ST.
 Both of us worked on the use cases, since there are quite a few of them. We also asked for some advice for additional Use cases and Test Cases from our classmates,
