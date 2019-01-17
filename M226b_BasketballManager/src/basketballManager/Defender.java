@@ -11,6 +11,9 @@ public class Defender extends Player {
     }
 
     @Override
+    /**
+     * Function to show the information of the Defenders (Used in Main)
+     */
     public String toString() {
         return "========== Defender =========\n" +
                 this.getName() + ", " + this.getAge() + " Jahre\n" +
