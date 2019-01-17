@@ -12,6 +12,9 @@ public class ShootingGuard extends Player {
     }
 
     @Override
+    /**
+     * Function to show the information of the ShootingGuards (Used in Main)
+     */
     public String toString() {
         return "======== ShootingGuard =========\n" +
                 this.getName() + ", " + this.getAge() + " Jahre\n" +
