@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class MainManagerSimulator {
 
 	public static void main(String[] args) {
-		Scanner scanTeamSelection;
 
 		List<Player> playersPistons = generatePlayerPistons();
 		List<Player> playersRaptors = generatePlayerRaptors();
@@ -31,18 +30,19 @@ public class MainManagerSimulator {
 		raptors.setCoTrainer(antonio);
 		raptors.setMainTrainer(patrick);
 
+		Scanner scanTeamSelection;
 		boolean validResponse = true;
+		String teamSelection = "";
 
 		do {
-
+			scanTeamSelection = new Scanner(System.in);
 			System.out.println("====================================");
 			System.out.println("Welcome to the Basketball Manager 2019");
 			System.out.println("====================================");
 			System.out.println(
 					"Choose your team!\n[1] " + pistons.getName() + "\n[2] " + raptors.getName() + "\n[x] End Program");
 
-			scanTeamSelection = new Scanner(System.in);
-			String teamSelection = scanTeamSelection.nextLine();
+			teamSelection = scanTeamSelection.nextLine();
 			switch (teamSelection) {
 			case "1":
 				selectionInTeam(pistons);
@@ -60,7 +60,6 @@ public class MainManagerSimulator {
 				break;
 			}
 		} while (validResponse);
-		scanTeamSelection.close();
 	}
 
 	private static Team generateTeam(String name, String league) {
@@ -108,7 +107,7 @@ public class MainManagerSimulator {
 		boolean tryAgain = true;
 		Scanner scanTeamOptions = new Scanner(System.in);
 		while (tryAgain) {
-			System.out.println("============= " + team.getName() + " ===============");
+			System.out.println("============= " + team + " ===============");
 			System.out.println("[1] View Team");
 			System.out.println("[2] Co-Trainer");
 			System.out.println("[3] Main Trainer");
@@ -134,7 +133,6 @@ public class MainManagerSimulator {
 				break;
 			}
 		}
-		scanTeamOptions.close();
 	}
 
 	private static void enteringTeam(Team team) {
@@ -193,7 +191,6 @@ public class MainManagerSimulator {
 				break;
 			}
 		}
-		scanViewTeam.close();
 	}
 
 	private static void enteringCoTrainer(Team team) {
@@ -223,7 +220,6 @@ public class MainManagerSimulator {
 				break;
 			}
 		}
-		scanViewCoTrainer.close();
 	}
 
 	private static void enteringMainTrainer(Team team) {
@@ -235,7 +231,7 @@ public class MainManagerSimulator {
 			System.out.println("[1] View Main-Trainer Info");
 			System.out.println("[2] Train Player");
 			System.out.println("[b] Back");
-			
+
 			String response = scanViewMainTrainer.nextLine();
 
 			switch (response) {
@@ -254,7 +250,6 @@ public class MainManagerSimulator {
 				break;
 			}
 		}
-		scanViewMainTrainer.close();
 	}
 
 	private static Player getPlayerByNumber(Team team, Trainer trainer) {
@@ -269,7 +264,6 @@ public class MainManagerSimulator {
 
 			selectedPlayer = player;
 		}
-		scanPlayerNumber.close();
 		return selectedPlayer;
 
 	}
@@ -287,40 +281,37 @@ public class MainManagerSimulator {
 			System.out.println("[5] Train dribbling (+2)");
 			System.out.println("[b] Back");
 			response = scanTrainingOptions.nextLine();
-			if (response.equals("1") || response.equals("2") || response.equals("3") || response.equals("4")
-					|| response.equals("5") || response.equals("b")) {
-				tryAgain = false;
+
+			tryAgain = false;
+			switch (response) {
+			case "1":
+				trainer.trainDefense(player);
+				System.out.println("Player trained his defense");
+				break;
+			case "2":
+				trainer.trainShooting(player);
+				System.out.println("Player trained his Shooting");
+				break;
+			case "3":
+				trainer.trainPace(player);
+				System.out.println("Player trained his Pace");
+				break;
+			case "4":
+				trainer.trainPassing(player);
+				System.out.println("Player trained his passing");
+				break;
+			case "5":
+				trainer.trainDribbling(player);
+				System.out.println("Player trained his dribbling");
+				break;
+			case "b":
+				break;
+			default:
+				System.out.println("Please enter a valid Option, try again\n");
+				tryAgain = true;
 			}
 		}
-		switch (response) {
-		case "1":
-			trainer.trainDefense(player);
-			System.out.println("Player trained his defense");
-			break;
-		case "2":
-			trainer.trainShooting(player);
-			System.out.println("Player trained his Shooting");
-			break;
-		case "3":
-			trainer.trainPace(player);
-			System.out.println("Player trained his Pace");
-			break;
-		case "4":
-			trainer.trainPassing(player);
-			System.out.println("Player trained his passing");
-			break;
-		case "5":
-			trainer.trainDribbling(player);
-			System.out.println("Player trained his dribbling");
-			break;
-		case "b":
-			tryAgain = false;
-			break;
-		default:
-			System.out.println("Please enter a valid Option, try again\n");
-			tryAgain = true;
-		}
-		scanTrainingOptions.close();
 	}
 
 }
+
