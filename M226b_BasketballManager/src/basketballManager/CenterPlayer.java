@@ -24,4 +24,4 @@ public class CenterPlayer extends Player {
                 "\n============================="
                 ;
     }
-}
+} 
