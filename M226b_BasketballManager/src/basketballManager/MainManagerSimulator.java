@@ -62,6 +62,7 @@ public class MainManagerSimulator {
 				// Terminates the program
 				System.out.println("Bye Bye");
 				break;
+				validResponse = false;
 			default:
 				// Starts the selection again because of invalid input (E.g.: 7, adjh, 9, ... )
 				System.out.println("Please enter a valid Option, try again\n");
