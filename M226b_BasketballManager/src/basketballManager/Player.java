@@ -73,6 +73,9 @@ public abstract class Player extends Person{
     }
 
     @Override
+    /**
+     * Function to show the information of all Players in the chosen team
+     */
     public String toString() {
         return "=============================\n" +
                 this.getName() + ", " + this.getAge() + " Jahre\n" +
@@ -84,3 +87,4 @@ public abstract class Player extends Person{
                 ;
     }
 }
+
