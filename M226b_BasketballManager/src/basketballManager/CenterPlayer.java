@@ -11,6 +11,9 @@ public class CenterPlayer extends Player {
     }
 
     @Override
+    /**
+     * Function to show the information of the CenterPlayers (Used in Main)
+     */
     public String toString() {
         return "======== CenterPlayer =========\n" +
                 this.getName() + ", " + this.getAge() + " Jahre\n" +
