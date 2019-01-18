@@ -24,6 +24,7 @@ Procedure:
 First, we designed our project. We wrote use Cases and a class diagram, the sequence diagram was later on adapted by Belinda ST.
 Both of us worked on the use cases, since there are quite a few of them. We also asked for some advice for additional Use cases and Test Cases from our classmates,
 so we could really get all the cases we could think of. 
+We continued this documentation throughout the project.
 
 Next Step:
 Next, we assigned some tasks. We knew, both of us should work on methods aswell as newer things like interfaces or abstract classes.
