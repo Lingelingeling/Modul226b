@@ -41,6 +41,9 @@ The Diagrams are filed at the same place but in an additional folder: ../Additio
 Next Step:
 We commented our code pretty much at the end. That was one of our last steps in this project. 
 
+Last Steps:
+- At almost the very end, one of our classmates tested our program.
+
 --------------------------
 
 What we learned:
